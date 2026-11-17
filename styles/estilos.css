@@ -1,155 +1,107 @@
-* {
-    box-sizing: border-box;
+/* Configuración general de la página */
+body {
     margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333333;
-    background-color: #f8f9fa;
-    display: flex;
-    min-height: 100vh;
+    line-height: 1.6;
 }
 
-/* Barra lateral izquierda (Perfil, Menú y Contacto) */
-header, aside {
-    background-color: #1f2d3d; /* Azul marino oscuro institucional */
-    color: #ffffff;
-    width: 300px;
-    padding: 2rem 1.5rem;
-    flex-shrink: 0;
+/* Barra lateral azul */
+.barra-lateral {
+    width: 280px;               /* Ancho de la barra lateral */
+    height: 100vh;              /* Ocupa el 100% del alto de la pantalla */
+    background-color: #1b365d;  /* Azul marino académico */
+    color: #ffffff;             /* Texto en blanco */
+    position: fixed;            /* Fija la barra al hacer scroll */
+    top: 0;
+    left: 0;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    overflow-y: auto;           /* Permite scroll interno si la pantalla es muy chica */
 }
 
-/* Ajuste para agrupar header y aside en una misma columna visual */
-body {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    grid-template-areas: 
-        "sidebar main"
-        "contact main"
-        "footer footer";
-}
-
-header {
-    grid-area: sidebar;
-    border-bottom: 1px solid #32465a;
-}
-
-aside {
-    grid-area: contact;
-    font-size: 0.9rem;
-}
-
-header h1 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: #ffffff;
-}
-
-/* Navegación vertical */
-nav ul {
-    list-style: none;
-}
-
-nav ul li {
-    margin-bottom: 0.75rem;
-}
-
-nav a {
-    color: #cbd5e1;
-    text-decoration: none;
-    font-weight: 500;
+/* Estilo y tamaño de la foto de perfil */
+.foto-perfil {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;         /* La hace circular (cámbialo a 8px si la quieres cuadrada con bordes suaves) */
+    object-fit: cover;          /* Evita que la foto se deforme */
     display: block;
-    padding: 0.4rem 0.6rem;
-    border-radius: 4px;
-    transition: background-color 0.2s, color 0.2s;
+    margin: 0 auto 20px auto;   /* Centra la foto horizontalmente */
+    border: 3px solid #ffffff;  /* Borde blanco delgado */
 }
 
-nav a:hover {
-    background-color: #2c3e50;
+/* Nombre en la barra lateral */
+.barra-lateral h2 {
+    font-size: 1.3em;
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 15px;
+}
+
+/* Menú de navegación */
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+}
+
+.menu li {
+    margin-bottom: 10px;
+}
+
+.menu a {
+    color: #e0e8f5;
+    text-decoration: none;
+    font-size: 1.05em;
+    display: block;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.menu a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
     color: #ffffff;
 }
 
-/* Sección de contacto en la barra lateral */
-aside h2 {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    color: #94a3b8;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+/* Sección de contacto dentro de la barra */
+.contacto {
+    font-size: 0.85em;
+    color: #cbd5e1;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 15px;
 }
 
-aside p {
-    margin-bottom: 0.6rem;
-    color: #e2e8f0;
+.contacto h3 {
+    color: #ffffff;
+    font-size: 1.1em;
+    margin-top: 0;
 }
 
-aside a {
-    color: #60a5fa;
-    text-decoration: none;
+/* Área del contenido principal (Derecha) */
+.contenido-principal {
+    margin-left: 280px;         /* Mismo ancho que .barra-lateral para no encimarse */
+    padding: 40px 60px;
+    max-width: 850px;           /* Evita que las líneas de texto sean demasiado largas */
 }
 
-/* Área principal de contenido */
-main {
-    grid-area: main;
-    background-color: #ffffff;
-    padding: 3rem 4rem;
-    max-width: 900px;
-}
-
-main section {
-    margin-bottom: 2.5rem;
-}
-
-main h2, main h3 {
-    color: #1f2d3d;
+.contenido-principal h2 {
+    color: #1b365d;
     border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 0.4rem;
-    margin-bottom: 1.2rem;
+    padding-bottom: 8px;
+    margin-top: 35px;
 }
 
-main p {
-    margin-bottom: 1rem;
-    text-align: justify;
-}
-
-main ul {
-    margin-left: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-main li {
-    margin-bottom: 0.6rem;
-}
-
-/* Pie de página */
-footer {
-    grid-area: footer;
-    text-align: center;
-    padding: 1rem;
-    background-color: #eef2f6;
-    color: #64748b;
-    font-size: 0.85rem;
-}
-
-/* Adaptación para celulares y pantallas pequeñas */
+/* Adaptación para celulares (pantallas pequeñas) */
 @media (max-width: 768px) {
-    body {
-        grid-template-columns: 1fr;
-        grid-template-areas: 
-            "sidebar"
-            "main"
-            "contact"
-            "footer";
-    }
-
-    header, aside {
+    .barra-lateral {
         width: 100%;
+        height: auto;
+        position: relative;
     }
-
-    main {
-        padding: 2rem 1.5rem;
+    .contenido-principal {
+        margin-left: 0;
+        padding: 25px 20px;
     }
 }
